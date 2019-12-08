@@ -11,11 +11,15 @@ public class Anagram {
         String collectA = getCollect(a);
         String collectB = getCollect(b);
 
-        return collectA.equalsIgnoreCase(collectB);
+        return collectA.equals(collectB);
     }
 
     private String getCollect(String w) {
-        return Arrays.stream(w.split("")).filter(f -> !f.equals(" ")).sorted().collect(Collectors.joining());
+        return Arrays.stream(w.split(""))
+            .filter(f -> !f.equals(" "))
+            .map(String::toLowerCase)
+            .sorted()
+            .collect(Collectors.joining());
     }
 
 }
